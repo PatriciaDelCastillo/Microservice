@@ -1,0 +1,45 @@
+version: "4.2"
+### Posgres database for Inventory
+services:
+  db-microservice:
+    container_name: db-inventory
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ms_inventory
+      POSTGRES_USER: dcastles
+      POSTGRES_PASSWORD: Test123
+    ports:
+      - 5431:5431
+    expose:
+        - 5431
+    command: -p 5431
+    ### MySQL database for Orders
+  db-orders:
+    container_name: db-orders
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: ms_orders
+      MYSQL_USER: dcastles
+      MYSQL_PASSWORD: Test123
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - 3307:3306
+    expose:
+      - 3306
+    ### Posgres database for Products
+  db-products:
+    container_name: db-products
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ms_products
+      POSTGRES_USER: dcastles
+      POSTGRES_PASSWORD: Test123
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    command:
+      -p 5432
